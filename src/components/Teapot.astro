@@ -1,0 +1,30 @@
+---
+// The 418 mark: a short, stout, engineered teapot. Strokes use currentColor
+// so it inherits the accent wherever it sits (nav, footer, roster cards).
+interface Props {
+  class?: string;
+  size?: number;
+  title?: string;
+}
+const { class: cls = '', size = 30, title } = Astro.props;
+---
+<svg
+  class={cls}
+  width={size}
+  height={size}
+  viewBox="0 0 32 32"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.7"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  role={title ? 'img' : undefined}
+  aria-hidden={title ? undefined : 'true'}
+>
+  {title && <title>{title}</title>}
+  <path d="M6.5 15.5 h19 a9.5 9.5 0 0 1 -19 0 z" />
+  <path d="M11.5 15.5 a4.5 4.5 0 0 1 9 0" />
+  <circle cx="16" cy="9.3" r="1.35" fill="currentColor" stroke="none" />
+  <path d="M6.7 16.4 c-3.2 -1 -4.4 -3.2 -3.5 -5.4" />
+  <path d="M25.5 13 c3.4 0.2 3.4 6 0 6.2" />
+</svg>
