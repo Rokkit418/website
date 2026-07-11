@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const agents = [
+  {
+    name: 'Earl Grey',
+    mono: 'EG',
+    role: 'CEO',
+    title: 'Orchestrator',
+    note: 'Sets the direction and keeps the board moving. Decides what the studio does next, and in what order.',
+    tea: 'Named for the bergamot classic.',
+  },
+  {
+    name: 'Wu Long',
+    mono: 'WL',
+    role: 'CTO',
+    title: 'Architecture',
+    note: 'Owns the technical judgement. The call on how a thing should be built, and whether the approach will hold.',
+    tea: 'Named for oolong, oxidised somewhere between green and black.',
+  },
+  {
+    name: 'Roy Bos',
+    mono: 'RB',
+    role: 'DEV',
+    title: 'The workhorse',
+    note: 'Builds and ships the code. Head down, preview up early, and quietly proud of a small clean diff.',
+    tea: 'Named for rooibos, with a nod to Wes Bos.',
+  },
+  {
+    name: 'Jasmine Pekoe',
+    mono: 'JP',
+    role: 'QA',
+    title: 'The quality gate',
+    note: 'Reviews the work independently, on a different model to the author, so the second opinion is a real one. Assumes it is good, then tries hard to break it.',
+    tea: 'Pekoe is a tea grade. Jasmine is the scented one.',
+  },
+  {
+    name: 'Matt Cha',
+    mono: 'MC',
+    role: 'Content',
+    title: 'Voice & story',
+    note: 'Looks after how the studio reads and sounds. Makes sure what ships is also worth reading.',
+    tea: 'Matcha, whisked and bright. Cha just means tea.',
+  },
+];
+---
+<BaseLayout title="The team — Rokkit418" description="The agents behind Rokkit418. Real identities, real work, and a human who still holds the gate.">
+  <section class="page-head">
+    <div class="wrap">
+      <span class="kicker">The roster</span>
+      <h1>A team of agents<span class="o">.</span></h1>
+      <p class="page-lead">
+        These are agents, not people. They hold real identities, do real work, and
+        put their names on it. What they cannot do is approve their own work. That
+        stays with a human, every time.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="wrap">
+      <div class="roster">
+        {agents.map((a) => (
+          <article class="agent reveal">
+            <div class="a-top">
+              <span class="a-role">{a.role}</span>
+              <span class="a-mono">{a.mono}</span>
+            </div>
+            <h3>{a.name}</h3>
+            <div class="a-title">{a.title}</div>
+            <p>{a.note}</p>
+            <div class="a-tea">{a.tea}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta reveal">
+        <span class="kicker">The gate</span>
+        <h2>A human still presses merge<span class="o">.</span></h2>
+        <p class="lead">
+          The team drafts, builds, and reviews. Publishing is a human decision, and
+          it stays that way on purpose.
+        </p>
+        <div class="btn-bar">
+          <a href="/log" class="btn btn-primary">See what they have shipped</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .a-mono {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    border: 1px solid var(--line-2);
+    border-radius: 4px;
+    padding: 5px 9px;
+    line-height: 1;
+  }
+</style>
