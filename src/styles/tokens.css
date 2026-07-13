@@ -1,0 +1,77 @@
+/* =========================================================
+   ROKKIT418 — BRAND SYSTEM v1  ·  tokens + type
+   Inherits the Rokkit200 blueprint DNA (warm-black ground,
+   blueprint navy structure, engineered 4px radius, mono
+   furniture) and carries its own signal: a steeped-tea amber
+   in place of the parent's red-orange. Single mode (no toggle).
+   ========================================================= */
+
+:root {
+  /* ---- Semantic color (default = dark, shared ground) ---- */
+  --bg:#0b0807; --bg-2:#120c0a; --surface:#16100e; --surface-2:#1e1713;
+  --fg:#f0ece9; --fg-dim:#cabdb6; --muted:#9a8c85;
+  --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.18);
+  --navy:#29335c; --indigo:#92a4e5;
+
+  /* ---- 418 signal: steeped-tea amber (own identity) ---- */
+  --accent:#c8791f; --accent-ink:#1b1206; --accent-2:#e6a75a; --accent-cool:#92a4e5;
+
+  --success:#3fae6e; --warn:#e0a13a; --danger:#ff6a5e;
+  --light:#eef2fb; --on-light:#15203b;
+  --grid:rgba(255,255,255,.045);
+  --glow:0 0 0 1px rgba(200,121,31,.35), 0 0 30px -8px rgba(200,121,31,.6);
+
+  /* ---- Brand ramps (12 steps) — blue structure shared with parent ---- */
+  --blue-1:#fdfdfe;  --blue-2:#f8f9fe;  --blue-3:#eef2fc;  --blue-4:#e2e9fe;
+  --blue-5:#d4defd;  --blue-6:#c3d0fa;  --blue-7:#afbef0;  --blue-8:#92a4e5;
+  --blue-9:#29335c;  --blue-10:#3a4670; --blue-11:#53639e; --blue-12:#242e56;
+
+  /* ---- Amber ramp (12 steps) — 418's own signal ---- */
+  --amber-1:#fff8ef;  --amber-2:#fdedd6;  --amber-3:#f8dcb2; --amber-4:#f2c886;
+  --amber-5:#e6a75a;  --amber-6:#d68f34;  --amber-7:#c8791f; --amber-8:#b26a18;
+  --amber-9:#985913;  --amber-10:#7c470f; --amber-11:#5c340a; --amber-12:#3a2106;
+
+  --neutral-1:#fcfcfc;  --neutral-2:#f9f9f9;  --neutral-3:#f0f0f0; --neutral-4:#e8e8e8;
+  --neutral-5:#e1e1e1;  --neutral-6:#d9d9d9;  --neutral-7:#cecece; --neutral-8:#bbbbbb;
+  --neutral-9:#8c8c8c;  --neutral-10:#828282; --neutral-11:#636363; --neutral-12:#1f1f1f;
+
+  --dark-1:#0c1322;  --dark-2:#131d33;  --dark-3:#1b2742;  --dark-4:#243454;
+  --dark-5:#2f4068;  --dark-6:#3a4d7c;  --dark-7:#4f5fa0;  --dark-8:#6f7fb8;
+  --dark-9:#92a4e5;  --dark-10:#b9c6f2; --dark-11:#d3ddf2; --dark-12:#eef2fb;
+
+  /* ---- Type families (shared with parent) ---- */
+  --font-display:'Space Grotesk', system-ui, sans-serif;
+  --font-body:'IBM Plex Sans', -apple-system, system-ui, sans-serif;
+  --font-mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* ---- Type scale ---- */
+  --fs-hero:clamp(48px,9.5vw,132px);
+  --fs-h1:clamp(34px,5vw,58px);
+  --fs-h2:clamp(28px,4vw,46px);
+  --fs-h3:20px;
+  --fs-lead:18px;
+  --fs-body:16px;
+  --fs-small:14px;
+  --fs-mono:11.5px;
+  --lh-display:1.05; --lh-body:1.6;
+  --tracking-display:-.02em; --tracking-mono:.18em; --tracking-kicker:.22em;
+
+  /* ---- Spacing scale (8px base) ---- */
+  --space-1:8px; --space-2:16px; --space-3:24px; --space-4:40px;
+  --space-5:64px; --space-6:104px;
+  --section-pad:84px; --wrap:1240px; --wrap-pad:32px;
+
+  /* ---- Radius (engineered, never soft) ---- */
+  --radius:4px; --radius-pill:999px;
+
+  /* ---- Motion ---- */
+  --ease:cubic-bezier(.2,0,0,1); --dur-ui:150ms; --dur-slow:200ms;
+}
+
+/* ---- Light-touch surface: re-declare tokens, do not hardcode ---- */
+.band, .light {
+  --bg:#eef2fb; --bg-2:#e5ebf7; --surface:#ffffff; --surface-2:#f4f7fd;
+  --fg:#15203b; --fg-dim:#34406a; --muted:#5f6b91;
+  --line:#d3ddf2; --line-2:#bdcaed; --indigo:#4f5fa0; --accent-cool:#4f5fa0;
+  background:var(--light); color:var(--on-light);
+}

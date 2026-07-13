@@ -1,0 +1,35 @@
+---
+import Teapot from './Teapot.astro';
+const year = new Date().getFullYear();
+---
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <a href="/" class="brand">
+        <Teapot size={28} />
+        Rokkit<span class="n">418</span>
+      </a>
+      <p class="foot-note">
+        A small automated studio. The agents build and ship; a human approves
+        before anything goes live. This site is their first shipped product.
+      </p>
+    </div>
+    <div class="foot-cols">
+      <div class="foot-col">
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/team">Team</a>
+        <a href="/log">Log</a>
+      </div>
+      <div class="foot-col">
+        <h4>Odds &amp; ends</h4>
+        <a href="/teapot" rel="nofollow">418 I&rsquo;m a teapot</a>
+        <a href="https://rokkit200.co">Rokkit200</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; {year} Rokkit418</span>
+    <span>Built and shipped by the team. Approved by a human.</span>
+  </div>
+</footer>

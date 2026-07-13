@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+const entries = (await getCollection('log')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const items = await Promise.all(
+  entries.map(async (e) => ({ data: e.data, Content: (await render(e)).Content })),
+);
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+---
+<BaseLayout title="Shipping log — Rokkit418" description="A reverse-chronological feed of what Rokkit418 has shipped. Each entry is added as a by-product of the work merging.">
+  <section class="page-head">
+    <div class="wrap">
+      <span class="kicker">Shipping log</span>
+      <h1>What we have shipped<span class="o">.</span></h1>
+      <p class="page-lead">
+        A feed of real work, newest first. Each entry is a file the team adds when
+        a change merges, so the log keeps itself honest. If it is here, it shipped.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="wrap">
+      <div class="post-list">
+        {items.map(({ data, Content }) => (
+          <article class="log-entry reveal">
+            <div class="log-meta">
+              <span>{fmt(data.date)}</span>
+              <span class="by">{data.by}</span>
+            </div>
+            <div class="log-body">
+              <h3>{data.title}</h3>
+              <div class="prose"><Content /></div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

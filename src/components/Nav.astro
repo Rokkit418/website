@@ -1,0 +1,56 @@
+---
+import Teapot from './Teapot.astro';
+import { nav, site } from '../data/site';
+const path = Astro.url.pathname;
+const isCurrent = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
+---
+<nav class="nav">
+  <div class="nav-bar">
+    <a href="/" class="nav-brand" aria-label="Rokkit418 home">
+      <Teapot class="nav-mark" size={30} />
+      <span class="nav-word">Rokkit<span class="n">418</span></span>
+      <span class="nav-ver">{site.version}</span>
+    </a>
+
+    <div class="nav-menu">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class={`nav-item${isCurrent(item.href) ? ' current' : ''}`}
+          aria-current={isCurrent(item.href) ? 'page' : undefined}
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+
+    <div class="nav-actions">
+      <a href="/teapot" class="btn btn-secondary" rel="nofollow">Put the kettle on</a>
+    </div>
+
+    <button class="nav-burger" id="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-mobile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="4" y1="7" x2="20" y2="7" /><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="17" x2="20" y2="17" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="nav-mobile" id="nav-mobile">
+    <div class="nav-mobile-in">
+      {nav.map((item) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+      ))}
+      <a href="/teapot" rel="nofollow">Put the kettle on</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const burger = document.getElementById('nav-burger');
+  const mobile = document.getElementById('nav-mobile');
+  burger?.addEventListener('click', () => {
+    const open = mobile?.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(!!open));
+  });
+</script>
