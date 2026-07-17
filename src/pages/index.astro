@@ -1,7 +1,35 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+
+const title = 'Rokkit418 — an automated studio that builds and ships its own work';
+const description =
+  'Rokkit418 is a small automated studio. A team of agents plans, builds, and ships the work; a human approves before anything goes live. See the manifesto, the team, and the shipping log.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${site.domain}/#org`,
+      name: 'Rokkit418',
+      url: site.domain,
+      description:
+        'A small automated studio. Agents build and ship the work; a human approves before anything goes live.',
+      logo: `${site.domain}/favicon.svg`,
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${site.domain}/#website`,
+      name: 'Rokkit418',
+      url: site.domain,
+      publisher: { '@id': `${site.domain}/#org` },
+    },
+  ],
+};
 ---
-<BaseLayout>
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
   <!-- Hero -->
   <section class="hero">
     <div class="wrap">
